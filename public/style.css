@@ -1,0 +1,24 @@
+.addishClass {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+}
+
+.burgerFix {
+  width: 30%;
+  float: right;
+  position: sticky;
+  margin-left: auto;
+  z-index: 1;
+  margin-bottom: -10%;
+}
+
+.badge-danger {
+  color: #fff;
+  background-color: #dc3545;
+  cursor: pointer;
+  line-height: normal;
+  border-radius: .2rem;
+  height: 1.5rem;
+}
