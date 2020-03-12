@@ -1,6 +1,7 @@
-const dotenv = require('dotenv').config()
-const express = require('express')
+const express = require('express-react-views')
+const axios = require('axios')
 const { join } = require('path')
+const dotenv = require('dotenv').config()
 const app = express()
 const { getBurgers, createBurger, updateBurger } = require('./controllers/burgerController.js')
 

@@ -1,10 +1,9 @@
-const db = require('./config/connection.js')
+const db = require('../config/connection.js')
 
 const burger = {
   getBurgers(cb) {
     db.query('SELECT * FROM burger', (err, burgers) => {
       if (err) throw err
-      // return items
       cb(burgers)
     })
   },

@@ -1,8 +1,6 @@
-// function to create a new hamburger
 const createHamburger = () => {
-  // Ajax request hitting the POST route defined in our burgerRoutes.js
+
   axios.post('/api/burgers', {
-    // grabbing the value of the burger_name text input to pass in the request body
     burger_name: document.getElementById('inputHamburgerTextArea').value,
     devoured: 0
   })
@@ -12,7 +10,6 @@ const createHamburger = () => {
 
 const renderBurger = () => {
   axios.get(`/api/burgers`)
-    // destructuring the list of items found off the payload
     .then(({ data: list }) => {
       renderBurgerList(list)
     })
@@ -52,9 +49,7 @@ const renderBurgerList = list => {
 
 
 const devoureBurger = ({ dataset: { id, devoured } }) => {
-  // axios DELETE request, which takes the data-id property off of the x badge on the <li> to identify the item to be deleted
   axios.put(`/api/burgers/${id}`, { devoured: !parseInt(devoured) })
-    // once finished, a GET request for the user and all their items is run
     .then(() => renderBurger())
     .catch(e => console.error(e))
 }
