@@ -1,4 +1,4 @@
-const db = require('../../config/connection.js.js')
+const db = require('./config/connection.js')
 
 const burger = {
   getBurgers(cb) {
