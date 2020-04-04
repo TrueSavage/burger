@@ -1,25 +1,29 @@
-const db = require('../config/connection.js')
+const express = require("express");
+const burger = require("../models/burger.js");
+const router = express.Router();
 
-const burger = {
-  getBurgers(cb) {
-    db.query('SELECT * FROM burger', (err, burgers) => {
-      if (err) throw err
-      cb(burgers)
-    })
-  },
-  createBurger(burger, cb) {
-    db.query('INSERT INTO burger SET ?', burger, err => {
-      if (err) throw err
-      cb()
-    })
-  },
-  updateBurger(updates, id, cb) {
-    db.query('UPDATE burger SET ? WHERE ?', [updates, { id: id }], err => {
-      if (err) throw err
-      cb()
-    })
-  },
+router.get('/', function (req, res) {
+  res.redirect("/burgers");
+});
 
-}
+router.get('/burgers', function (req, res) {
+  burger.select(function (data) {
+    var hbsObject = { burgers: data };
+    res.render('index', hbsObject);
+  });
+});
 
-module.exports = burger
+router.post("/burgers/create", function (req, res) {
+  burger.create(["burger_name"], [req.body.burger_name], function (result) {
+    res.redirect("/burgers");
+  });
+});
+
+router.put('/burgers/update/:id', function (req, res) {
+  var condition = `id = ${req.params.id}`;
+  burger.update({ 'devoured': req.body.devoured }, condition, function (data) {
+    res.redirect('/burgers');
+  });
+});
+
+module.exports = router;

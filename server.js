@@ -1,24 +1,20 @@
-const express = require('express-react-views')
-const axios = require('axios')
-const { join } = require('path')
-const dotenv = require('dotenv').config()
-const app = express()
-const { getBurgers, createBurger, updateBurger } = require('./controllers/burgerController.js')
+require("dotenv").config();
+const express = require("express");
+const bodyParser = require("body-parser");
+const exphbs = require("express-handlebars");
+const methodOverride = require('method-override');
+const routes = require("./controllers/burgerController");
+const app = express();
+const PORT = process.env.PORT || 8080;
 
-app.use(express.static(join(__dirname, 'public')))
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
-app.set('views', join(__dirname, 'views'))
-app.set('view engine', 'jsx')
-app.engine('jsx', require('express-react-views').createEngine())
+app.use(methodOverride('_method'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+app.use("/", routes);
+app.use(express.static('public'));
 
-app.use(require('./routes'))
-
-app.get('/', (req, res) => {
-
-  res.render('home')
-
-
-})
-
-app.listen(process.env.PORT || 3000)
+app.listen(PORT, function () {
+  console.log("App now listening at localhost:" + PORT);
+});
