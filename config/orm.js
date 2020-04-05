@@ -1,6 +1,4 @@
-// Global
-// const connection = require("./connection.js");
-// Print Question Marks
+// const connection = require("../config/connection");
 function printQuestionMarks(num) {
   var arr = [];
   for (var i = 0; i < num; i++) {
@@ -8,7 +6,7 @@ function printQuestionMarks(num) {
   }
   return arr.toString();
 };
-// Object to SQL
+
 function objToSql(ob) {
   var arr = [];
   for (var key in ob) {
@@ -22,7 +20,7 @@ function objToSql(ob) {
   }
   return arr.toString();
 };
-// Orm
+
 const orm = {
   selectAll: function (table, cb) {
     var queryString = `SELECT * FROM ${table};`;
@@ -53,5 +51,5 @@ const orm = {
     });
   }
 };
-// Export Orm
+
 module.exports = orm;

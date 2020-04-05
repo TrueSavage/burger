@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/TrueSavage/burger#readme",
   "dependencies": {
+    "@material-ui/core": "^4.9.9",
+    "@material-ui/styles": "^4.9.6",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
