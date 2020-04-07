@@ -3,8 +3,7 @@ DROP DATABASE IF EXISTS burgers_db;
 CREATE DATABASE burgers_db;
 
 CREATE TABLE burger (
-  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  name VARCHAR (50) NOT NULL,
+  burger_name VARCHAR (50) NOT NULL,
   devoured BOOL: NOT NULL
 );
 
